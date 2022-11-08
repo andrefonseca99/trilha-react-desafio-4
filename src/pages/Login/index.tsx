@@ -3,9 +3,9 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
 import { Container, LoginContainer, Column, Spacing, Title } from "./styles";
 import { defaultValues, IFormLogin } from "./types";
+
 
 const schema = yup
   .object({
@@ -16,6 +16,10 @@ const schema = yup
       .required("Campo obrigatório"),
   })
   .required();
+
+  function handleLogin(){
+    alert('Entrou!')
+  }
 
 const Login = () => {
   const {
@@ -49,7 +53,7 @@ const Login = () => {
             errorMessage={errors?.password?.message}
           />
           <Spacing />
-          <Button title="Entrar" />
+          <Button disabled={!isValid} title="Entrar" onClick={() => handleLogin()} />
         </Column>
       </LoginContainer>
     </Container>
